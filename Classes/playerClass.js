@@ -1,3 +1,6 @@
+import { Weapon } from "./weaponClass.js";
+import { Armor } from "./armorClass.js";
+
 export class Player {
     constructor (name, id){
         this.name = name;
@@ -6,7 +9,7 @@ export class Player {
         this.level = 1;
         this.upPoints = 0;
         this.exp = 0;
-        this.weapon = {};
+        this.weapon = {}
         this.armorBonus = {};
         this.str = this.setStat();
         this.dex = this.setStat();
@@ -20,11 +23,11 @@ export class Player {
     }
 
     setArmor(armortype){
-        this.armorBonus = {defence: armortype.defence, mobility: armortype.mobility};
+        this.armorBonus = {defence: armortype.defence, dexterity: armortype.dexterity};
     }
 
     setWeapon(weapon){
-        this.weapon = weapon;
+        this.weapon = {Type: weapon.WeaponType, attack: weapon.attack, defense: weapon.defense};
     }
 
     battlePlayer(oppPlayer){

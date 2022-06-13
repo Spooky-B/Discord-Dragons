@@ -1,6 +1,6 @@
 export class Armor {
     constructor(){
-        this.mobility = this.setStat();
+        this.dexterity = this.setStat();
         this.defence = this.setStat();
     }
     
@@ -10,7 +10,7 @@ export class Armor {
 
     getStats(){
         var stats = {
-            mobility: this.mobility,
+            dexterity: this.mobility,
             defence: this.defence
         }
         return stats;

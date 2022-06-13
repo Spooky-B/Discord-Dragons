@@ -1,0 +1,9 @@
+class GameManager {
+    constructor(){
+
+    }
+
+    AddPlayer(){
+        
+    }
+}
