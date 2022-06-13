@@ -1,19 +1,13 @@
 import { Player } from "./Classes/playerClass.js";
 import { Armor } from "./Classes/armorClass.js";
 import { Weapon } from "./Classes/weaponClass.js"
+import { GameManager } from "./Classes/gameManger.js"
+ 
+const gameManager = new GameManager;
 
-const newPlayer = (name, id) => {
-    var player = new Player(name, id);
-    var armor = new Armor;
-    var weapon = new Weapon;
+gameManager.newPlayer("Player1", "Player1ID");
+gameManager.newPlayer("Player2", "Player2ID");
 
-    player.setWeapon(weapon);
-    player.setArmor(armor);
+gameManager.fight("Player1", "Player2")
 
-    player.printCharacter();
-
-    //nulling the vars to clear memory
-    player = null;
-    armor = null;
-    weapon = null;
-}
+gameManager.printAllPlayers();

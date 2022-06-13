@@ -22,12 +22,36 @@ export class Player {
         return Math.floor(Math.random() * (18 - 8 + 1) + 8);
     }
 
+    updateStats(){
+        //update stats after a fight or something
+    }
+
     setArmor(armortype){
         this.armorBonus = {defence: armortype.defence, dexterity: armortype.dexterity};
     }
 
     setWeapon(weapon){
         this.weapon = {Type: weapon.WeaponType, attack: weapon.attack, defense: weapon.defense};
+    }
+
+    getStats(){
+        let playerObj = {
+            name: this.name,
+            id: this.id,
+            money: this.money,
+            level: this.level,
+            upPoints: this.upPoints,
+            exp: this.exp,
+            weapon: this.weapon,
+            armor: this.armorBonus,
+            strength: this.str,
+            dexterity: this.dex,
+            constitution: this.Const,
+            iteligence: this.intel,
+            charisma: this.charisma
+        } 
+
+        return playerObj;
     }
 
     battlePlayer(oppPlayer){
