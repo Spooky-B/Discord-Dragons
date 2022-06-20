@@ -32,30 +32,31 @@ export class Player {
         this.weapon = {Type: weapon.WeaponType, attack: weapon.attack, defense: weapon.defense};
     }
 
-    gainExp(result){
-        if(result == "Win"){
-            this.exp = this.exp + 2;
-            if(this.exp >= this.level){
-                this.exp = 0;
-                this.levelUp()
-            }
+    winFight(){
+        this.exp = this.exp + 2;
+        if(this.exp >= (this.level * 2)){
+            this.exp = 0;
+            this.levelUp()
         }
 
-        if(result == "Loss"){
-            this.exp = this.exp + 1;
-            if(this.exp >= this.level){
-                this.exp = 0;
-                this.level++
-            }
+        return
+    } 
+
+    loseFight(){
+        this.exp = this.exp + 1;
+        if(this.exp >= (this.level * 2)){
+            this.exp = 0;
+            this.level++
         }
 
         return
     }
 
     levelUp(){
-        this.level++
+        this.level++;
+        this.upPoints++;
 
-        console.log(`${this.name} Leveled up to level ${this.level}`)
+        console.log(`${this.name} Leveled up to level ${this.level}`);
     }
 
     getStats(){

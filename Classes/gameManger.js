@@ -25,10 +25,7 @@ export class GameManager {
         weapon = null;
     }
 
-    fight(attacker, defender){
-         let player1;
-         let player2;
-
+    playerFight(attacker, defender){
          for(let i = 0; i < this.players.length; i++){
             if(this.players[i].name == attacker){
                 attacker = this.players[i];
@@ -42,21 +39,26 @@ export class GameManager {
             let healthLoss = (attacker.str + attacker.weapon.attack) - (defender.Const + defender.armorBonus.defense);
             console.log(`attacker wins, defender loses ${healthLoss} health`)
             defender.money = defender.health - healthLoss;
-            defender.gainExp("Loss");
-            attacker.gainExp("Win")
+            defender.loseFight();
+            attacker.winFight();
          } else {
             console.log("defender wins, Attacker loses $10")
             attacker.money = attacker.money - 10;
-            defender.gainExp("Win");
-            attacker.gainExp("Loss")
+            defender.winFight();
+            attacker.loseFight();
          }
           return;
     }
 
     newEnemy(){
+        let max = this.players.length - 1;
+        let targetSelector = Math.floor(Math.random() * (max - 0 + 1));
+        let target = this.players[targetSelector]
+
+        let level = this.players[targetSelector].level + 1;
 
 
-        let enemy = new Enemy(level, tagret);
+        let enemy = new Enemy(level, target);
         let armor = new Armor;
         let weapon = new Weapon;
 
@@ -64,6 +66,14 @@ export class GameManager {
         enemy.setArmor(armor);
 
         this.enemies.push(enemy);
+    }
+
+    printAllEnemies(){
+        console.log("Printing All Enemies")
+        for(let i = 0; i < this.enemies.length ; i++){
+            console.log(this.enemies[i])
+        }
+        return;
     }
 
     printAllPlayers(){
