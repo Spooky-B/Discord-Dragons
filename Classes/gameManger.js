@@ -1,16 +1,18 @@
 import { Player } from "./playerClass.js";
 import { Armor } from "./armorClass.js";
-import { Weapon } from "./weaponClass.js"
+import { Weapon } from "./weaponClass.js";
+import { Enemy } from "./EnemyClass.js"
 
 export class GameManager {
     constructor(){
             this.players = [];
+            this.enemies = [];
     }
 
     newPlayer(name, id){
-        var player = new Player(name, id);
-        var armor = new Armor;
-        var weapon = new Weapon;
+        let player = new Player(name, id);
+        let armor = new Armor;
+        let weapon = new Weapon;
     
         player.setWeapon(weapon);
         player.setArmor(armor);
@@ -29,19 +31,39 @@ export class GameManager {
 
          for(let i = 0; i < this.players.length; i++){
             if(this.players[i].name == attacker){
-                player1 = this.players[i];
+                attacker = this.players[i];
             }
             if(this.players[i].name == defender){
-                player2 = this.players[i];
+                defender = this.players[i];
             }
          }
 
-         if(player1.str > player2.str){
-            console.log("player1 wins")
+         if((attacker.str + attacker.weapon.attack) > (defender.Const + defender.armorBonus.defense)){
+            let healthLoss = (attacker.str + attacker.weapon.attack) - (defender.Const + defender.armorBonus.defense);
+            console.log(`attacker wins, defender loses ${healthLoss} health`)
+            defender.money = defender.health - healthLoss;
+            defender.gainExp("Loss");
+            attacker.gainExp("Win")
          } else {
-            console.log("player2 wins")
+            console.log("defender wins, Attacker loses $10")
+            attacker.money = attacker.money - 10;
+            defender.gainExp("Win");
+            attacker.gainExp("Loss")
          }
           return;
+    }
+
+    newEnemy(){
+
+
+        let enemy = new Enemy(level, tagret);
+        let armor = new Armor;
+        let weapon = new Weapon;
+
+        enemy.setWeapon(weapon);
+        enemy.setArmor(armor);
+
+        this.enemies.push(enemy);
     }
 
     printAllPlayers(){
