@@ -1,4 +1,9 @@
 import { GameManager } from "./Classes/gameManger.js"
+require('dotenv').config();
+const knex = require('knex')(require('./knexfile.js')['development']);
+const Discord = require('discord.js')
+const client = new Discord.Client()
+const PREFIX = '!'
  
 const gameManager = new GameManager;
 
