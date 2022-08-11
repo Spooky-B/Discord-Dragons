@@ -1,4 +1,4 @@
-export class Armor {
+class Armor {
     constructor(){
         this.dexterity = this.setStat();
         this.defence = this.setStat();
@@ -16,3 +16,5 @@ export class Armor {
         return stats;
     }
 }
+
+module.exports = Armor;

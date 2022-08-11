@@ -1,9 +1,9 @@
-import { Player } from "./playerClass.js";
-import { Armor } from "./armorClass.js";
-import { Weapon } from "./weaponClass.js";
-import { Enemy } from "./EnemyClass.js"
+const Player = require('./playerClass')
+const Enemy = require('./EnemyClass')
+const Weapon = require('./weaponClass')
+const Armor = require('./armorClass')
 
-export class GameManager {
+class GameManager {
     constructor(){
             this.players = [];
             this.enemies = [];
@@ -84,3 +84,5 @@ export class GameManager {
         return;
     }
 }
+
+module.exports = GameManager;

@@ -1,4 +1,4 @@
-export class Player {
+class Player {
     constructor (name, id){
         this.name = name;
         this.id = id;
@@ -88,3 +88,5 @@ export class Player {
         console.log(this);
     }
 }
+
+module.exports = Player;

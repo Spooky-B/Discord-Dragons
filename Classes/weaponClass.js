@@ -1,4 +1,4 @@
-export class Weapon {
+class Weapon {
     constructor(){
         this.attack = this.setStat();
         this.defense = this.setStat();
@@ -33,3 +33,5 @@ export class Weapon {
         return stats;
     }
 }
+
+module.exports = Weapon;

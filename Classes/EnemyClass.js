@@ -1,4 +1,4 @@
-export class Enemy {
+class Enemy {
     constructor(level, target)
     {
         this.money = 50;
@@ -41,3 +41,5 @@ export class Enemy {
     }
 
 }
+
+module.exports = Enemy;
